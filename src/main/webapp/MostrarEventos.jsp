@@ -1,20 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!doctype html>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS -->
-<link rel="stylesheet" href="css/newportal.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/newportal.css">
 
 <title>Lista de Eventos</title>
 </head>
@@ -33,9 +31,9 @@
 			<!-- Espacio de enlace de Volver y Cerrar sesión -->
 			<div class="form-row">
 				<div class="col">
-					<a href="ServletEmisora?accion=volver">Volver</a>
+					<a href="${pageContext.request.contextPath}/ServletEmisora?accion=volver">Volver</a>
 				</div>
-				<div class="col-11"><a href="">Cerrar sesión</a></div>
+				<a href="${pageContext.request.contextPath}/ServletEmisora?accion=logout">Cerrar sesión</a>
 			</div>
 
 			<p></p>
@@ -50,16 +48,16 @@
 								<form role="form" id="datos-usuario" autocomplete="off"
 									class="credentials">
 									<div class="input-group">
-										Nombre:
+										Nombre: ${sessionScope.user.nombre}
 									</div>
 									<div class="input-group">
-										Email:
+										Email: ${sessionScope.user.email}
 									</div>
 									<div class="input-group">
-										Dirección:
+										Dirección: ${sessionScope.user.direccion}
 									</div>
 									<div class="input-group">
-										Teléfono:
+										Teléfono: ${sessionScope.user.telefono}
 									</div>
 
 								</form>
@@ -90,15 +88,17 @@
 					<div class="col-2">Asientos disponibles</div>
 				</div>
 
-				<div class="form-row tableHeaderUser" style="font-size: small;">
-					<div class="col"></div>
-					<div class="col-2"></div>
-					<div class="col-2"></div>
-					<div class="col"></div>
-					<div class="col-2"></div>
-					<div class="col-2"></div>
-					<div class="col-2"></div>
-				</div>
+				<c:forEach items="${listaEventos}" var="evento">
+					<div class="form-row tableHeaderUser" style="font-size: small;">
+						<div class="col">${evento.eventoId}</div>
+						<div class="col-2">${evento.nombre}</div>
+						<div class="col-2">${evento.descripcion}</div>
+						<div class="col">${evento.lugar}</div>
+						<div class="col-2">${evento.duracion}</div>
+						<div class="col-2">${evento.tipoEvento}</div>
+						<div class="col-2">${evento.asientosDisp}</div>
+					</div>
+				</c:forEach>
 
 			</div>
 

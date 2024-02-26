@@ -1,23 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!doctype html>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS -->
-<link rel="stylesheet" href="./css/newportal.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/newportal.css">
 
 <title>Grupos Musicales</title>
 
@@ -38,9 +33,9 @@
 			<!-- Espacio de enlace de Volver y Cerrar sesión -->
 			<div class="form-row">
 				<div class="col">
-					<a href="">Volver</a>
+					<a href="${pageContext.request.contextPath}/ServletEmisora?accion=volver">Volver</a>
 				</div>
-				<div class="col-11"><a href="">Cerrar sesión</a></div>
+				<div class="col-11"><a href="${pageContext.request.contextPath}/ServletEmisora?accion=logout">Cerrar sesión</a></div>
 			</div>
 
 			<p></p>
@@ -55,16 +50,16 @@
 								<form role="form" id="datos-usuario" autocomplete="off"
 									class="credentials">
 									<div class="input-group">
-										Nombre:
+										Nombre: ${sessionScope.user.nombre}
 									</div>
 									<div class="input-group">
-										Email:
+										Email: ${sessionScope.user.email}
 									</div>
 									<div class="input-group">
-										Dirección:
+										Dirección: ${sessionScope.user.direccion}
 									</div>
 									<div class="input-group">
-										Teléfono:
+										Teléfono: ${sessionScope.user.telefono}
 									</div>
 
 								</form>
@@ -94,24 +89,26 @@
 					<div class="col"></div>
 					<div class="col"></div>
 				</div>
-
-				<div class="form-row tableHeaderUser" style="font-size: small;">
-					<div class="col"></div>
-					<div class="col-2"></div>
-					<div class="col"></div>
-					<div class="col-2"></div>
-					<div class="col-2"></div>
-					<div class="col">
-						<a href="">	Detalle </a>
+				
+				<c:forEach items="${listaGrupos}" var="grupo">
+					<div class="form-row tableHeaderUser" style="font-size: small;">
+						<div class="col">${grupo.grupoId}</div>
+						<div class="col-2">${grupo.nombre}</div>
+						<div class="col">${grupo.creacion}</div>
+						<div class="col-2">${grupo.origen}</div>
+						<div class="col-2">${grupo.genero}</div>
+						<div class="col">
+							<a href="${pageContext.request.contextPath}/ServletEmisora?accion=detalle&grupoId=${grupo.grupoId}">Detalle</a>
+						</div>
+						<div class="col">
+							<a href="${pageContext.request.contextPath}/ServletEmisora?accion=modificar&grupoId=${grupo.grupoId}">Modificar</a>
+						</div>
+						<div class="col">
+							<a href="${pageContext.request.contextPath}/ServletEmisora?accion=baja&grupoId=${grupo.grupoId}">Eliminar</a>
+						</div>
 					</div>
-					<div class="col">
-						<a href="">	Modificar </a>
-					</div>
-					<div class="col">
-						<a href="">	Eliminar </a>
-					</div>
-				</div>
-
+				</c:forEach>
+				
 				<div class="col-11"></div>
 
 			</div>
@@ -122,7 +119,7 @@
 			<div class="form-row">
 				<div class="col-1"></div>
 				<form role="form" id="grupos-musicales" autocomplete="off">
-					<input type="hidden" name="" value="">
+					<input type="hidden" id="accion" name="accion" value="alta">
 					<span class="input-group-btn">
 						<button type="submit" class="btn btn-info">Añadir grupo</button>
 					</span>

@@ -1,26 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!doctype html>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS -->
-<link rel="stylesheet" href="./css/newportal.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/newportal.css">
 
-<title>Grupos Musicales - Actualizar grupo musical</title>
-
+<title>Grupos Musicales - Nuevo grupo musical</title>
 </head>
 
 <body class="fondo">
@@ -38,13 +32,13 @@
 			<!-- Espacio de enlace de Volver-->
 			<div class="form-row">
 				<div class="col">
-					<a href="ServletEmisora?accion=cargar">Volver</a>
+					<a href="${pageContext.request.contextPath}/ServletEmisora?accion=volver">Volver</a>
 				</div>
 			</div>
 
 			<p></p>
 
-			<!-- Espacio para modificar los datos -->
+			<!-- Espacio para dar de alta los datos -->
 			<div class="form-row">
 				<div class="col-3"></div>
 				<div class="col-6">
@@ -52,34 +46,28 @@
 						<div class="form-group">
 							<div>
 								<form role="form" id="login-usuarios" autocomplete="off"
-									class="credentials" method="" action="">
-									<input type="hidden" name="" value="">
-									Actualizar grupo musical
-									<p></p>
-
-									<div class="input-group">
-										<input name="grupoId" type="text" readonly="readonly"
-											class="form-control fontAwesome"
-											value="">
-									</div>
+									class="credentials" method="get" action="ServletEmisora">
+									<input type="hidden" id="accion" name="accion" value="insertar">
+									Nuevo grupo musical
 									<p></p>
 
 									<div class="input-group">
 										<input name="nombre" type="text"
-											class="form-control fontAwesome" value="">
+											class="form-control fontAwesome"
+											placeholder="&#xf007; Nombre del grupo">
 									</div>
 									<p></p>
 									<div class="input-group">
 										<input name="creacion" type="text"
 											class="form-control fontAwesome"
-											value="">
+											placeholder="&#xf007; Año de creación">
 									</div>
 									<p></p>
 
 									<div class="input-group">
 										<select name="origen" id="origen"
 											class="form-control fontAwesome">
-											<option selected>Estados Unidos</option>
+											<option>Estados Unidos</option>
 											<option>Reino Unido</option>
 											<option>Australia</option>
 											<option>España</option>
@@ -91,11 +79,11 @@
 									<div class="input-group">
 										<select name="genero" id="genero"
 											class="form-control fontAwesome">
-													<option selected>Heavy Metal</option>
-													<option>Hard rock</option>
-													<option>Rock</option>
-													<option>Folk metal</option>
-													<option>Rock andaluz</option>
+											<option>Heavy Metal</option>
+											<option>Hard rock</option>
+											<option>Rock</option>
+											<option>Folk metal</option>
+											<option>Rock andaluz</option>
 										</select>
 									</div>
 									<p></p>
@@ -104,7 +92,7 @@
 										<button type="submit" class="btn btn-info">Guardar</button>
 									</span> <span class="input-group-btn">
 										<button type="reset" class="btn btn-info"
-											onclick="">Cancelar</button>
+											onclick="history.back();">Cancelar</button>
 									</span>
 
 								</form>
@@ -114,7 +102,10 @@
 					</div>
 				</div>
 
+
+
 			</div>
+
 
 			<!-- Espacio para el mensaje -->
 			<div class="form-row">

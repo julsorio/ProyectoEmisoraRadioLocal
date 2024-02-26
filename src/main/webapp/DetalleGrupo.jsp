@@ -1,23 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!doctype html>
 <html lang="en">
 <head>
 <!-- Required meta tags -->
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- CSS -->
-<link rel="stylesheet" href="./css/newportal.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/newportal.css">
 
 <title>Grupos Musicales - Detalle</title>
 
@@ -38,7 +33,7 @@
 			<!-- Espacio de enlace de Volver -->
 			<div class="form-row">
 				<div class="col">
-					<a href="">Volver</a>
+					<a href="${pageContext.request.contextPath}/ServletEmisora?accion=volver">Volver</a>
 				</div>
 			</div>
 
@@ -54,19 +49,19 @@
 								<form role="form" id="datos-usuario" autocomplete="off"
 									class="credentials">
 									<div class="input-group">
-										Id del grupo:
+										Id del grupo: ${grupo.grupoId}
 									</div>
 									<div class="input-group">
-										Nombre del grupo:
+										Nombre del grupo: ${grupo.nombre}
 									</div>
 									<div class="input-group">
-										Año de creación del grupo:
+										Año de creación del grupo: ${grupo.creacion}
 									</div>
 									<div class="input-group">
-										Lugar de origen del grupo:
+										Lugar de origen del grupo: ${grupo.origen}
 									</div>
 									<div class="input-group">
-										Género musical del grupo:
+										Género musical del grupo: ${grupo.genero}
 									</div>
 								</form>
 							</div>
