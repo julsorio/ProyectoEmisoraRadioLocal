@@ -9,4 +9,6 @@ public class ConstantesError {
 	
 	public static final String DATOS_LOGIN_VACIOS = "Usuario/Password son obligatorios";
 	public static final String DATOS_LOGIN_ERRADOS = "Usuario/Password incorrecta";
+	
+	public static final String CONSULTA_EVENTOS_SIN_RESULTADO = "No hay resultados";
 }

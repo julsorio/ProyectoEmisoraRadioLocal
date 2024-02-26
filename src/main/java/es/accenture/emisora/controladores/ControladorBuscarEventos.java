@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import es.accenture.emisora.constantes.ConstantesError;
 import es.accenture.emisora.constantes.ConstantesVistas;
 import es.accenture.emisora.entidades.Evento;
 import es.accenture.emisora.modelos.ModEvento;
@@ -29,6 +30,10 @@ public class ControladorBuscarEventos implements IControlador {
 				listaEventos = modeloEvento.getEventos();
 			} else {
 				listaEventos = modeloEvento.getEventos(filtro);
+			}
+			
+			if(listaEventos.isEmpty()) {
+				request.setAttribute("error", ConstantesError.CONSULTA_EVENTOS_SIN_RESULTADO);
 			}
 			
 			request.setAttribute("listaEventos", listaEventos);
