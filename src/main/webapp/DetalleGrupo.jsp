@@ -33,7 +33,7 @@
 			<!-- Espacio de enlace de Volver -->
 			<div class="form-row">
 				<div class="col">
-					<a href="${pageContext.request.contextPath}/ServletEmisora?accion=volver">Volver</a>
+					<a href="${pageContext.request.contextPath}/ServletEmisora?accion=cargar">Volver</a>
 				</div>
 			</div>
 

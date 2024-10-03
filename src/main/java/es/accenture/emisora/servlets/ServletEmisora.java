@@ -56,6 +56,7 @@ public class ServletEmisora extends HttpServlet {
 		ControladorInsertar insertar = null;
 		ControladorBuscarEventos buscarEventos = null;
 		
+		
 		switch(accion) {
 		case ConstantesAccion.ACCION_ACTUALIZAR:
 			actualizar = new ControladorActualizar(poolConexiones);

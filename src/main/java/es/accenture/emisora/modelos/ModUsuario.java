@@ -23,7 +23,7 @@ public class ModUsuario {
 		
 		Usuario user = null;
 		
-		String query = "SELECT usuarioId, nombre, apellido, dni,email,telefono,direccion,usuario,password FROM usuarios WHERE usuario = ? ";
+		String query = "SELECT usuarioId, nombre, apellido, dni,email,telefono,direccion,usuario,password,admin FROM usuarios WHERE usuario = ? ";
 		
 		try {
 			miConexion = poolConexiones.getConnection();
@@ -43,6 +43,7 @@ public class ModUsuario {
 					user.setTelefono(resultado.getString("telefono"));
 					user.setUsuario(resultado.getString("usuario"));
 					user.setUsuarioId(resultado.getInt("usuarioId"));
+					user.setAdmin(resultado.getBoolean("admin"));
 				}
 			}
 			

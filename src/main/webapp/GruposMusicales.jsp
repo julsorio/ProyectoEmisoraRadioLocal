@@ -98,13 +98,19 @@
 						<div class="col-2">${grupo.origen}</div>
 						<div class="col-2">${grupo.genero}</div>
 						<div class="col">
-							<a href="${pageContext.request.contextPath}/ServletEmisora?accion=detalle&grupoId=${grupo.grupoId}">Detalle</a>
+							<c:if test="${sessionScope.user.isAdmin}">
+								<a href="${pageContext.request.contextPath}/ServletEmisora?accion=detalle&grupoId=${grupo.grupoId}">Detalle</a>
+							</c:if>
 						</div>
 						<div class="col">
-							<a href="${pageContext.request.contextPath}/ServletEmisora?accion=modificar&grupoId=${grupo.grupoId}">Modificar</a>
+							<c:if test="${sessionScope.user.isAdmin}">
+								<a href="${pageContext.request.contextPath}/ServletEmisora?accion=modificar&grupoId=${grupo.grupoId}">Modificar</a>
+							</c:if>
 						</div>
 						<div class="col">
-							<a href="${pageContext.request.contextPath}/ServletEmisora?accion=baja&grupoId=${grupo.grupoId}">Eliminar</a>
+							<c:if test="${sessionScope.user.isAdmin}">
+								<a href="${pageContext.request.contextPath}/ServletEmisora?accion=baja&grupoId=${grupo.grupoId}">Eliminar</a>
+							</c:if>
 						</div>
 					</div>
 				</c:forEach>
